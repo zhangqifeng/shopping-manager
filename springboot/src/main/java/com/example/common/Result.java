@@ -7,6 +7,7 @@ public class Result {
     private String msg;
     private Object data;
 
+
     private Result(Object data) {
         this.data = data;
     }
