@@ -44,6 +44,7 @@
             </template>
             <el-menu-item index="/notice">公告信息</el-menu-item>
             <el-menu-item index="/type">分类信息</el-menu-item>
+            <el-menu-item index="/goods">商品信息</el-menu-item>
           </el-submenu>
 
           <el-submenu index="user">
@@ -51,6 +52,7 @@
               <i class="el-icon-menu"></i><span>用户管理</span>
             </template>
             <el-menu-item index="/admin">管理员信息</el-menu-item>
+            <el-menu-item index="/business">商家信息</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>

@@ -7,15 +7,16 @@
                 <div style="color: #FE0137FF; margin: 15px 0 15px 18px; font-weight: bold; font-size: 16px">主题市场</div>
                 <div style="display: flex; margin: 0 25px; height: 550px">
                     <div style="flex: 2">
-                        <div style="display: flex; color: #666666FF; margin: 14px 0" v-for="item in typeData">
+                        <div style="display: flex; color: #666666FF; margin: 14px 0" v-for="item in typeData" :key="item.id">
                             <img :src="item.img" alt="" style="height: 20px; width: 20px">
-                            <div style="margin-left: 10px; font-size: 14px">{{item.name}}</div>
+                            <div style="margin-left: 10px; font-size: 14px"><a href="#" @click="navTo('/front/type?id=' + item.id)">{{item.name}}</a>
+                            </div>
                         </div>
                     </div>
                     <div style="flex: 5; margin-top: 15px">
                         <div>
                             <el-carousel height="300px" style="border-radius: 10px">
-                                <el-carousel-item v-for="item in carousel_top">
+                                <el-carousel-item v-for="item in carousel_top" :key="item.id">
                                     <img :src="item" alt="" style="width: 100%; height: 300px; border-radius: 10px">
                                 </el-carousel-item>
                             </el-carousel>
@@ -23,14 +24,14 @@
                         <div style="margin-top: 30px; display: flex">
                             <div style="flex: 1">
                                 <el-carousel height="300px" style="border-radius: 10px">
-                                    <el-carousel-item v-for="item in carousel_left">
+                                    <el-carousel-item v-for="item in carousel_left" :key="item.id">
                                         <img :src="item" alt="" style="width: 100%; height: 200px; border-radius: 10px">
                                     </el-carousel-item>
                                 </el-carousel>
                             </div>
                             <div style="flex: 1; margin-left: 5px">
                                 <el-carousel height="300px" style="border-radius: 10px">
-                                    <el-carousel-item v-for="item in carousel_right">
+                                    <el-carousel-item v-for="item in carousel_right" :key="item.id">
                                         <img :src="item" alt="" style="width: 100%; height: 200px; border-radius: 10px">
                                     </el-carousel-item>
                                 </el-carousel>
@@ -70,6 +71,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div style="margin: 40px 0 0 15px; height: 40px; background-color: #04BF04FF; font-size: 20px; color: white; width: 130px; font-weight: bold; line-height: 40px; text-align: center; border-radius: 20px">热卖商品</div>
+                <div style="margin: 10px 5px 0 5px">
+                    <el-row>
+                        <el-col :span="5" v-for="item in goodsData" :key="item.id">
+                            <img @click="navTo('/front/detail?id=' + item.id)" :src="item.img" alt="" style="width: 100%; height: 175px; border-radius: 10px; border: #cccccc 1px solid">
+                            <div style="margin-top: 10px; font-weight: 500; font-size: 16px; width: 180px; color: #000000FF; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{item.name}}</div>
+                            <div style="margin-top: 5px; font-size: 20px; color: #FF5000FF">￥ {{item.price}} / {{item.unit}}</div>
+                        </el-col>
+                    </el-row>
+                </div>
+
             </div>
             <div class="right"></div>
         </div>
@@ -82,6 +95,7 @@
 
         data() {
             return {
+                goodsData: [],
                 user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
                 typeData: [],
                 top: null,
@@ -106,9 +120,22 @@
         mounted() {
             this.loadType()
             this.loadNotice()
+            this.loadGoods()
         },
         // methods：本页面所有的点击事件或者其他函数定义区
         methods: {
+            navTo(url) {
+                location.href = url
+            },
+            loadGoods() {
+                this.$request.get('/goods/selectTop15').then(res => {
+                    if (res.code === '200') {
+                        this.goodsData = res.data
+                    } else {
+                        this.$message.error(res.msg)
+                    }
+                })
+            },
             loadType() {
                 this.$request.get('/type/selectAll').then(res => {
                     if (res.code === '200') {
