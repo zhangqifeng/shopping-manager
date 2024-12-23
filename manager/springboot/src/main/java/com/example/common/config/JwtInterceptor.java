@@ -11,6 +11,7 @@ import com.example.common.enums.RoleEnum;
 import com.example.entity.Account;
 import com.example.exception.CustomException;
 import com.example.service.AdminService;
+import com.example.service.BusinessService;
 import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,8 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     @Resource
     private AdminService adminService;
+    @Resource
+    private BusinessService businessService;
     @Resource
     private UserService userService;
 
@@ -55,6 +58,9 @@ public class JwtInterceptor implements HandlerInterceptor {
             // 根据userId查询数据库
             if (RoleEnum.ADMIN.name().equals(role)) {
                 account = adminService.selectById(Integer.valueOf(userId));
+            }
+            if (RoleEnum.BUSINESS.name().equals(role)) {
+                account = businessService.selectById(Integer.valueOf(userId));
             }
             if (RoleEnum.USER.name().equals(role)) {
                 account = userService.selectById(Integer.valueOf(userId));
