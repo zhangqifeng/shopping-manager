@@ -73,7 +73,7 @@ export default {
   },
   created() {
     if (!this.user.id) {
-      this.$router.push('/login')
+      this.$router.push('/front/home')
     }
   },
   methods: {
