@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # デフォルトの無視対象ファイル
 /shelf/
 /workspace.xml
@@ -6,3 +7,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+=======
+
