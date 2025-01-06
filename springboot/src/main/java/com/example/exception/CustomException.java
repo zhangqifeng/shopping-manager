@@ -5,8 +5,10 @@ import com.example.common.enums.ResultCodeEnum;
 public class CustomException extends RuntimeException {
     private String code;
     private String msg;
+    private ResultCodeEnum resultCodeEnum;
 
     public CustomException(ResultCodeEnum resultCodeEnum) {
+        this.resultCodeEnum = resultCodeEnum;
         this.code = resultCodeEnum.code;
         this.msg = resultCodeEnum.msg;
     }
@@ -31,5 +33,10 @@ public class CustomException extends RuntimeException {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+
+    public ResultCodeEnum getResultCode() {
+        return resultCodeEnum;
     }
 }
