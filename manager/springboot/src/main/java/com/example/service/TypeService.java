@@ -68,4 +68,6 @@ public class TypeService {
         return PageInfo.of(list);
     }
 
+
 }
+

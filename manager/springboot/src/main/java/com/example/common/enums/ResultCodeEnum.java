@@ -1,3 +1,4 @@
+
 package com.example.common.enums;
 
 public enum ResultCodeEnum {
@@ -24,3 +25,4 @@ public enum ResultCodeEnum {
         this.msg = msg;
     }
 }
+

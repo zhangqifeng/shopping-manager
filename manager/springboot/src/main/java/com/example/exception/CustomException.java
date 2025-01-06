@@ -1,3 +1,4 @@
+
 package com.example.exception;
 
 import com.example.common.enums.ResultCodeEnum;
@@ -33,3 +34,4 @@ public class CustomException extends RuntimeException {
         this.msg = msg;
     }
 }
+

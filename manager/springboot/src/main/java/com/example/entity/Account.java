@@ -1,3 +1,4 @@
+
 package com.example.entity;
 
 /**
@@ -84,3 +85,4 @@ public class Account {
         this.token = token;
     }
 }
+

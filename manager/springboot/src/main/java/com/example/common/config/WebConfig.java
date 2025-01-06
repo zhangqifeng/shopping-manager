@@ -1,3 +1,4 @@
+
 package com.example.common.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +20,7 @@ public class WebConfig implements  WebMvcConfigurer {
                 .excludePathPatterns("/")
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/register")
-                .excludePathPatterns("/files/**")
-                .excludePathPatterns("/login")
-                .excludePathPatterns("/register")
-                .excludePathPatterns("/type/**")
-                .excludePathPatterns("/notice/selectAll")
-                .excludePathPatterns("/comment/selectByGoodsId/**")
-                .excludePathPatterns("/goods/**")
-                .excludePathPatterns("/goods/**");
+                .excludePathPatterns("/files/**");
     }
+
 }

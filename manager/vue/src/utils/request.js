@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 import router from "@/router";
 
@@ -41,6 +42,5 @@ request.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-
 
 export default request

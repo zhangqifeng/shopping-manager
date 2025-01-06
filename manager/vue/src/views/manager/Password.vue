@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <el-card style="width: 50%">
@@ -76,4 +77,5 @@ export default {
 /deep/.el-form-item__label {
   font-weight: bold;
 }
+
 </style>

@@ -32,3 +32,4 @@ public interface TypeMapper {
     List<Type> selectAll(Type type);
 
 }
+
